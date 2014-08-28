@@ -93,6 +93,9 @@ são eles:
 1 - Desenvolvimento ágil (Ver as metodologias ágeis)
 
 2 - Infraesturura ágil (Infraesturura ágil)
+    Assim que o cliente decide que o software está pronto para ir ao ar e o código é colocado em produção, os verdadeiros usuários começam a usar o sistema. Nessemomento, diversas outras preocupações se tornamrelevantes:
+suporte, monitoramento, segurança, disponibilidade, desempenho, usabilidade, dentre outras. Quando o software está em produção, a prioridade é mantê-lo rodando de forma estável. Em casos de falha ou desastres, o time precisa estar preparado para reagir de forma proativa e resolver o problema rapidamente.
+
   Basicamente temos três tipos de ferramentas, são elas:  
     - Orquestradores (Fabric, Capistano, Func e Mcollective)
     - Ferramentas para gerenciamento de configurações (Algumas delas são Puppet, Chef, Cfegine e Salt)
