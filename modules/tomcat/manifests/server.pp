@@ -2,7 +2,6 @@ class tomcat::server($connectors = [], $data_sources = []) {
 
 package { "tomcat7":
   ensure => installed,
-  require => Exec["apt-update"],
 }
 
 file { "/etc/default/tomcat7":

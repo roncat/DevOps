@@ -1,5 +1,7 @@
 class loja_virtual::db {
 
+include loja_virtual
+
 include mysql::server
 include loja_virtual::params
 
