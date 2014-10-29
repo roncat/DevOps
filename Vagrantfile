@@ -12,6 +12,8 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
+config.librarian_puppet.puppetfile_dir = "librarian"
+
   config.vm.box = "hashicorp/precise32"
   config.vm.provider "virtualbox" do |vb|
     vb.customize ["modifyvm", :id, "--memory", "1024"]
@@ -19,11 +21,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.customize ["modifyvm", :id, "--ioapic", "on"]
   end
 
-  config.vm.define :db2 do |db_config|
+  config.vm.define :db do |db_config|
     db_config.vm.network :private_network, :ip => "192.168.3.101"
     db_config.vm.provision "puppet" do |puppet|
-        puppet.module_path = "modules"
-        puppet.manifest_file = "db2.pp"
+        puppet.module_path = ["modules", "librarian/modules"]
+        puppet.manifest_file = "db.pp"
     end
   end 
 
@@ -33,8 +35,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define :ci do |ci_config|
      ci_config.vm.network :private_network, :ip => "192.168.3.105"
+     ci_config.vm.provision :shell, :inline => "ulimit -n 8192"
      ci_config.vm.provision "puppet" do |puppet|
-         puppet.module_path = "modules"
+         puppet.module_path = ["modules", "librarian/modules"]
          puppet.manifest_file = "ci.pp"
      end
   end
@@ -44,6 +47,8 @@ end
 
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config2|
+
+config2.librarian_puppet.puppetfile_dir = "librarian"
 
   config2.vm.box = "hashicorp/precise32"
   config2.vm.provider "virtualbox" do |vb|
@@ -55,7 +60,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config2|
   config2.vm.define :web do |web_config|
     web_config.vm.network :private_network, :ip => "192.168.3.102"
     web_config.vm.provision "puppet" do |puppet|
-      puppet.module_path = "modules"
+      puppet.module_path = ["modules", "librarian/modules"]
       puppet.manifest_file = "web.pp"
     end
   end
