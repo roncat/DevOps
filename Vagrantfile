@@ -29,6 +29,14 @@ config.librarian_puppet.puppetfile_dir = "librarian"
     end
   end 
 
+  config.vm.define :tomcat do |tomcat_config|
+    tomcat_config.vm.network :private_network, :ip => "192.168.3.104"
+    tomcat_config.vm.provision "puppet" do |puppet|
+        puppet.module_path = ["modules", "librarian/modules"]
+        puppet.manifest_file = "tomcat.pp"
+    end
+  end 
+
   config.vm.define :monitor do |monitor_config|
      monitor_config.vm.network :private_network, :ip => "192.168.3.103"
   end

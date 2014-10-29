@@ -1,0 +1,4 @@
+bin/
+embedded/
+librarian/
+.vagrant/
