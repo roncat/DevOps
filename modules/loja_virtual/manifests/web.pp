@@ -22,16 +22,17 @@ class loja_virtual::web {
   }
 
   apt::source { 'devopsnapratica':
-    location => 'http://192.168.3.102/',
+    location => 'http://192.168.3.105/',
     release => 'devopspkgs',
     repos => 'main',
     key => '4F3FD614',
-    key_source => 'http://192.168.3.102/devopspkgs.gpg'
+    key_source => 'http://192.168.3.105/devopspkgs.gpg',
     include_src => false,
   }
 
   package { "devopsnapratica":
     ensure => "latest",
+    require => Package['tomcat7'],
     notify => Service["tomcat7"],
   }
 
