@@ -21,12 +21,18 @@ class loja_virtual::web {
   require => File[$loja_virtual::params::keystore_file],
   }
 
-  file { "/var/lib/tomcat7/webapps/devopsnapratica.war":
-    owner => tomcat7,
-    group => tomcat7,
-    mode => 0644,
-    source => "puppet:///modules/loja_virtual/devopsnapratica.war",
-    require => Package["tomcat7"],
+  apt::source { 'devopsnapratica':
+    location => 'http://192.168.3.102/',
+    release => 'devopspkgs',
+    repos => 'main',
+    key => '4F3FD614',
+    key_source => 'http://192.168.3.102/devopspkgs.gpg'
+    include_src => false,
+  }
+
+  package { "devopsnapratica":
+    ensure => "latest",
     notify => Service["tomcat7"],
   }
+
 }
