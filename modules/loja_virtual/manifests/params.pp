@@ -19,6 +19,6 @@ $db = {
     "password" => "lojasecret",
     "schema" => "loja_schema",
     "driver" => "com.mysql.jdbc.Driver",
-    "url" => "jdbc:mysql://192.168.3.10:3306/",
+    "url" => "jdbc:mysql://192.168.3.101:3306/",
 }
 }
