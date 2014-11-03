@@ -14,4 +14,11 @@ TODO:
 
 
 
+
+Comandos:
+
+  Vagrant
+
+     facter = Dentro da maq. virtual para ver as variaveis de ambiente disponiveis para o vagrant
+
  -----------------------------
