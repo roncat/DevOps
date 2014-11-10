@@ -35,10 +35,10 @@
   class { "tomcat::server":
     connectors => [$ssl_connector],
     data_sources => {
-       "jdbc/web" => $db,
-       "jdbc/secure" => $db,
-       "jdbc/storage" => $db,
+    "jdbc/web" => $db,
+    "jdbc/secure" => $db,
+    "jdbc/storage" => $db,
     },
-	  require => File[$keystore_file],
+  require => File[$keystore_file],
   }
 

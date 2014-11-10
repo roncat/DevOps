@@ -14,9 +14,9 @@ class loja_virtual::web {
   class { "tomcat::server":
     connectors => [$loja_virtual::params::ssl_connector],
     data_sources => {
-       "jdbc/web" => $loja_virtual::params::db,
-       "jdbc/secure" => $loja_virtual::params::db,
-       "jdbc/storage" => $loja_virtual::params::db,
+    "jdbc/web" => $loja_virtual::params::db,
+    "jdbc/secure" => $loja_virtual::params::db,
+    "jdbc/storage" => $loja_virtual::params::db,
     },
   require => File[$loja_virtual::params::keystore_file],
   }

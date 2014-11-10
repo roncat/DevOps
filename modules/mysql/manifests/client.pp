@@ -1,8 +1,5 @@
 class mysql::client {
-
-  package { "mysql-client":
-    ensure => installed,
-  }
+package { "mysql-client":
+ensure => installed,
 }
-
-
+}
