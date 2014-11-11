@@ -5,7 +5,7 @@ class loja_virtual::ci inherits loja_virtual {
     ensure => "installed",
   }
 
-  package { 'fpm':
+  package { ['fpm', 'bundler']:
     ensure => 'installed',
     provider => 'gem',
     require => Package['rubygems'],
@@ -27,7 +27,9 @@ class loja_virtual::ci inherits loja_virtual {
     'javadoc',
     'mailer',
     'greenballs',
-    'ws-cleanup'
+    'ws-cleanup',
+    'parameterized-trigger',
+    'copyartifact'
 ]
 
   jenkins::plugin { $plugins: }
