@@ -24,7 +24,6 @@ config.librarian_puppet.puppetfile_dir = "librarian"
   config.vm.define :db do |db_config|
     db_config.vm.network :private_network, :ip => "192.168.3.101"
     db_config.vm.provision "puppet" do |puppet|
-        puppet.options = "--verbose --debug"
         puppet.module_path = ["modules", "librarian/modules"]
         puppet.manifest_file = "db.pp"
     end
